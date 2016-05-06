@@ -7,6 +7,7 @@ gem 'font-awesome-rails'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 # ------------------------------------------------------------------------------
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

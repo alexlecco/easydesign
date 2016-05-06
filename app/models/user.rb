@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  devise :omniauthable, omniauth_providers: [:facebook]
+  devise :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   def self.find_or_create_by_omniauth(auth)
     user = User.where(provider: auth[:provider], uid: auth[:uid]).first
