@@ -7,12 +7,15 @@
       <%= devise_error_messages! %>
 
       <% if session[:omniauth_errors] %>
-        <div class="flash"> <%= :session[:omniauth_errors] %> </div>
+        <div class="flash"> <%= session[:omniauth_errors] %> </div>
       <% end %>
 
       <div class="form-group"><%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, class: "form-control",
                                 value: get_email_oauth %></div>
+
+      <div class="form-group"><%= f.label :username %><br />
+      <%= f.text_field :username, class: "form-control", value: get_username_oauth %></div>
 
       <div class="form-group"><%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %></div>
