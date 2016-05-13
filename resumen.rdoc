@@ -1,0 +1,12 @@
+-strong params: mecanismos para proteger campos sensibles.
+
+-callbacks: mecanismos para ejecutar acciones antes de procesar una petición.
+
+-Resful API
+  GET
+  POST
+  PUT
+  DELETE
+  PATCH
+
+-
