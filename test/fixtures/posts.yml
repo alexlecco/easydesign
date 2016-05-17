@@ -4,10 +4,16 @@ one:
   title: MyString
   content: MyText
   extension: MyString
-  user_id: 
+  user_id:
+
+primer_articulo:
+  title: Mi primer articulo
+  content: Este es el primer articulo de esta red social
+  extension: jpg
+  user_id:
 
 two:
   title: MyString
   content: MyText
   extension: MyString
-  user_id: 
+  user_id:
