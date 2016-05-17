@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   setup do
     @post = posts(:one)
   end
