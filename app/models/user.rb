@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # el email ya no es necesario para crear un usuario
+  def email_required?
+    false
+  end
+
   devise :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   validates :username, presence: true, uniqueness: true,
@@ -29,6 +34,7 @@ class User < ActiveRecord::Base
         password:  Devise.friendly_token[0,20]
       )
     end
+    user
   end
 
 =begin
