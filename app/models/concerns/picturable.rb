@@ -2,12 +2,19 @@
 
 module Picturable
   extend ActiveSupport::Concern
-
   included do
     after_save :save_image
   end
 
   PATH_FILES = File.join Rails.root, "public", "files"
+
+=begin
+  if self.respond_to?(:name)
+    PATH_FILES = File.join Rails.root, "public", "files"
+  else
+    PATH_FILES = File.join Rails.root, "public", "posts"
+  end
+=end
 
   def file=(file)
     unless file.blank?
