@@ -26,4 +26,15 @@ class PostTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::RecordNotFound) {Post.find(post.id)}
   end
 
+  test "no se debe poder crear un post sin titulo" do
+    post = Post.new
+    assert post.invalid?, "El post debería ser invalido"
+  end
+
+  test "cada titulo tiene que ser unico" do
+    post = Post.new
+    post.title = posts(:primer_articulo).title
+    assert post.invalid?, "Dos posts no pueden tener el mismo titulo"
+  end
+
 end
