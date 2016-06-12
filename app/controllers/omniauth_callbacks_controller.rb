@@ -1,4 +1,5 @@
 class OmniauthCallbacksController < ApplicationController
+
   def facebook
     auth = request.env["omniauth.auth"]
     #raise auth.to_yaml
@@ -48,4 +49,5 @@ class OmniauthCallbacksController < ApplicationController
       redirect_to new_user_registration_url
     end
   end
+  
 end

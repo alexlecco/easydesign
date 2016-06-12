@@ -3,13 +3,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  devise :omniauthable, omniauth_providers: [:facebook, :twitter]
+
+  has_many :posts
 
   # el email ya no es necesario para crear un usuario
   def email_required?
     false
   end
-
-  devise :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   validates :username, presence: true, uniqueness: true,
                        length: { in: 5..20,
