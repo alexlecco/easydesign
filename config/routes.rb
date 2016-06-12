@@ -1,4 +1,6 @@
 EasyDesign::Application.routes.draw do
+  resources :attachments
+
   resources :posts
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",
