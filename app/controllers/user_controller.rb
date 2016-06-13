@@ -6,7 +6,7 @@ class UserController < ApplicationController
 
   def follow
     respond_to do |format|
-      if current_user.follow!(post_params)
+      if current_user.follow!(post_params[:friend_id])
         format.json {head :no_content}
       else
         format.json {render json: "Se encontraron errores", status: :unprocessable_entity}

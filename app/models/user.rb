@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   has_many :posts
-  has_many :friendships
+  has_many :friendships, foreign_key: "user_id", dependent: :destroy
 
   has_many :follows, through: :friendships, source: :friend
 
