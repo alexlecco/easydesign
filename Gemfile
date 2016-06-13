@@ -10,6 +10,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem "awesome_print", require:"ap"
+
+gem "public_activity"
 # ------------------------------------------------------------------------------
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

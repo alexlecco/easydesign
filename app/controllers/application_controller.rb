@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
 
   #before_action :configure_permitted_parameters #metodo para indicar a devise los parametros que debe aceptar la peticion
+  include PublicActivity::StoreController
   protect_from_forgery with: :exception
 
 =begin

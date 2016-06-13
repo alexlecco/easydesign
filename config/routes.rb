@@ -1,16 +1,23 @@
 EasyDesign::Application.routes.draw do
+
   resources :attachments
 
   resources :posts
 
+  resources :user
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks",
                                    registrations: "registrations"}
   get "welcome/index"
+
+  post "user/follow"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+  get 'user/:id' => 'user#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

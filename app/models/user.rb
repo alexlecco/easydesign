@@ -6,6 +6,21 @@ class User < ActiveRecord::Base
   devise :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   has_many :posts
+  has_many :friendships
+
+  has_many :follows, through: :friendships, source: :friend
+
+  has_many :followers_friendships, class_name: "Friendship", foreign_key: "friend_id"
+
+  has_many :followers, through: :followers_friendships, source: :user
+
+  def follow!(friend_id)
+    friendships.create!(friend_id: friend_id)
+  end
+
+  def can_follow?(friend_id)
+    not friend_id == self.id or friendships.where(friend_id: friend_id).size > 0
+  end
 
   # el email ya no es necesario para crear un usuario
   def email_required?
@@ -13,13 +28,14 @@ class User < ActiveRecord::Base
   end
 
   validates :username, presence: true, uniqueness: true,
-                       length: { in: 5..20,
-                                too_short: "El usuario debe tener al menos 5 caracteres",
-                                too_long: "El usuario no debe superar los 20 caracteres" },
-                       format: { with: /([A-Za-z0-9\-\_]+)/, message: "El usuario puede contener solo letras, numeros y guiones" }
+  length: { in: 5..20,
+    too_short: "El usuario debe tener al menos 5 caracteres",
+    too_long: "El usuario no debe superar los 20 caracteres" },
+    format: { with: /([A-Za-z0-9\-\_]+)/, message: "El usuario puede contener solo letras, numeros y guiones" }
 
   #validación personalizada
   #validate: :validacion_personalizada, on: :create
+
 
   def self.find_or_create_by_omniauth(auth)
     user = User.where(provider: auth[:provider], uid: auth[:uid]).first
