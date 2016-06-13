@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   has_many :attachments
   validates :title, presence: true, uniqueness: true
   include Picturable
